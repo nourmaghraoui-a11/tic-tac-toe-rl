@@ -1,4 +1,4 @@
-# Tic‑Tac‑Toe RL — Démo (PyScript)
+[# Tic‑Tac‑Toe RL — Démo (PyScript)
 
 Cliquez sur une case vide pour jouer. Vous êtes **O**, l’agent est **X**.
 
@@ -133,3 +133,4 @@ async def boot():
 
 await boot()
 </py-script>
+](https://nourmaghraoui-a11.github.io/tic-tac-toe-rl/)
