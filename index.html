@@ -5,8 +5,8 @@
   <title>Tic‑Tac‑Toe RL — Démo (PyScript)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Charger PyScript (CSS + JS) -->
-  <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/pyscript.css">
+  <!-- Charger PyScript correctement (balises HTML réelles !) -->
+  <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/pyscript.css" />
   <script defer src="https://pyscript.net/releases/2024.1.1/pyscript.js"></script>
 
   <style>
@@ -29,7 +29,7 @@
 <body>
   <div class="app">
     <h1>Tic‑Tac‑Toe RL — Démo</h1>
-    <p class="subtitle">Agent <b>X</b>  vs Vous</p>
+    <p class="subtitle">Agent <b>X</b> (Q‑learning) vs Vous <b>O</b> — 100% navigateur (PyScript)</p>
 
     <div id="msg" class="msg">Chargement de l’agent…</div>
 
@@ -59,7 +59,7 @@
     packages = ["numpy"]
   </py-config>
 
-  <!-- (Optionnel) Si tu veux réutiliser tes fonctions depuis environment.py :
+  <!-- (Optionnel) Pour réutiliser tes fonctions d'environnement :
        Mets environment.py au même niveau et décommente la ligne suivante. -->
   <!-- <py-script src="environment.py"></py-script> -->
 
@@ -71,7 +71,7 @@ import numpy as np
 import asyncio
 from pyodide.http import pyfetch
 
-# Si environment.py n'est pas importé, on définit les fonctions minimales ici
+# Si environment.py n'est pas importé, on définit des fonctions minimales ici
 try:
     init_state
 except NameError:
@@ -169,4 +169,3 @@ await boot()
   </py-script>
 </body>
 </html>
-``
