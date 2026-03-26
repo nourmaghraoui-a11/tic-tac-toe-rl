@@ -5,35 +5,35 @@
   <title>Tic‑Tac‑Toe RL — Démo (PyScript)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- 1) Charger correctement PyScript -->
-  <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/pyscript.css" />
+  <!-- Charger PyScript (CSS + JS) -->
+  <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/pyscript.css">
   <script defer src="https://pyscript.net/releases/2024.1.1/pyscript.js"></script>
 
   <style>
     body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:#fafafa; color:#222; margin:0; padding:2rem; display:flex; justify-content:center; }
     .app { max-width: 520px; width:100%; background:#fff; border:1px solid #ddd; border-radius:14px; padding:20px; box-shadow:0 4px 24px rgba(0,0,0,0.06);}
-    h1 { font-size:1.4rem; margin:0 0 0.5rem; }
+    h1 { font-size:1.4rem; margin:0 0 .5rem; }
     .subtitle { color:#666; margin:0 0 1rem; }
     .board { display:grid; grid-template-columns: repeat(3, 100px); gap:10px; justify-content:center; margin:10px 0 12px;}
-    .cell { width:100px; height:100px; font-size:56px; font-weight:700; background:#f4f6fb; border:2px solid #dbe1f1; border-radius:12px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:0.12s; }
+    .cell { width:100px; height:100px; font-size:56px; font-weight:700; background:#f4f6fb; border:2px solid #dbe1f1; border-radius:12px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:.12s; }
     .cell:hover { background:#eef2fd; }
-    .cell.disabled { cursor: default; opacity: 0.7; }
+    .cell.disabled { cursor: default; opacity:.7; }
     .controls { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:10px;}
     button.ctrl { padding:10px 14px; border:1px solid #cfd8ea; background:#f7f9fe; border-radius:10px; cursor:pointer; font-weight:600; }
     button.ctrl:hover { background:#eef2fd; }
-    .msg { text-align:center; margin: 8px 0 4px; font-weight:600; color:#2c7d59;}
-    .footer { text-align:center; color:#999; font-size: 0.8rem; margin-top:6px;}
+    .msg { text-align:center; margin:8px 0 4px; font-weight:600; color:#2c7d59;}
+    .footer { text-align:center; color:#999; font-size:.8rem; margin-top:6px;}
   </style>
 </head>
 
 <body>
   <div class="app">
     <h1>Tic‑Tac‑Toe RL — Démo</h1>
-    <p class="subtitle">Agent <b>X</b> (Q‑learning) vs Vous <b>O</b> — 100% navigateur (PyScript)</p>
+    <p class="subtitle">Agent <b>X</b>  vs Vous</p>
 
     <div id="msg" class="msg">Chargement de l’agent…</div>
 
-    <!-- 2) La grille 3x3 -->
+    <!-- Grille 3x3 -->
     <div id="board" class="board">
       <button class="cell" id="cell-0" py-click="play_cell(0)">0</button>
       <button class="cell" id="cell-1" py-click="play_cell(1)">1</button>
@@ -54,17 +54,16 @@
     <p class="footer">Fait avec ❤️ PyScript (Pyodide). Vous êtes <b>O</b>, l’agent est <b>X</b>.</p>
   </div>
 
-  <!-- 3) PyScript config : on a besoin de NumPy -->
+  <!-- Dépendances Python côté navigateur -->
   <py-config>
     packages = ["numpy"]
   </py-config>
 
-  <!-- 4) (Optionnel) Charger ton environment.py si tu veux réutiliser tes fonctions -->
-  <!-- Décommente si environment.py est à côté de ce fichier :
-  <py-script src="environment.py"></py-script>
-  -->
+  <!-- (Optionnel) Si tu veux réutiliser tes fonctions depuis environment.py :
+       Mets environment.py au même niveau et décommente la ligne suivante. -->
+  <!-- <py-script src="environment.py"></py-script> -->
 
-  <!-- 5) Code principal PyScript -->
+  <!-- Code principal PyScript -->
   <py-script>
 from pyscript import Element
 from js import document
@@ -72,7 +71,7 @@ import numpy as np
 import asyncio
 from pyodide.http import pyfetch
 
-# Fonctions minimales si environment.py n'est pas chargé
+# Si environment.py n'est pas importé, on définit les fonctions minimales ici
 try:
     init_state
 except NameError:
@@ -170,3 +169,4 @@ await boot()
   </py-script>
 </body>
 </html>
+``
