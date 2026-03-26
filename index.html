@@ -5,8 +5,8 @@
   <title>Tic‑Tac‑Toe RL — Démo (PyScript)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Charger PyScript correctement (balises HTML réelles !) -->
-  <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/pyscript.css" />
+  <!-- Charger PyScript (balises correctes) -->
+  <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/pyscript.css">
   <script defer src="https://pyscript.net/releases/2024.1.1/pyscript.js"></script>
 
   <style>
@@ -54,13 +54,13 @@
     <p class="footer">Fait avec ❤️ PyScript (Pyodide). Vous êtes <b>O</b>, l’agent est <b>X</b>.</p>
   </div>
 
-  <!-- Dépendances Python côté navigateur -->
+  <!-- Config PyScript -->
   <py-config>
     packages = ["numpy"]
   </py-config>
 
-  <!-- (Optionnel) Pour réutiliser tes fonctions d'environnement :
-       Mets environment.py au même niveau et décommente la ligne suivante. -->
+  <!-- (Optionnel) Pour réutiliser tes fonctions d'environnement,
+       place environment.py à côté et charge-le ainsi : -->
   <!-- <py-script src="environment.py"></py-script> -->
 
   <!-- Code principal PyScript -->
@@ -87,6 +87,8 @@ except NameError:
 
 async def load_qtable_json(url="qtable.json"):
     resp = await pyfetch(url)
+    if not resp.ok:
+        raise RuntimeError(f"Échec chargement {url} (status {resp.status})")
     data = await resp.json()
     return {k: np.array(v, dtype=np.float32) for k, v in data.items()}
 
